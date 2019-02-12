@@ -209,4 +209,4 @@ YEAR		AVG_RWD		VIOLATIONS
 DISCUSSION AND CONCLUSIONS
 ***************************
 Very good results with stable/robust outputs. Better than/Comparable to all RELU model A.
-Is much more intelligent than A - does not increase duty cycles on critical days (Wakkanai,2000: 320-350)O
+Is much more intelligent than A - does not increase duty cycles on critical days (Wakkanai,2000: 320-350)
