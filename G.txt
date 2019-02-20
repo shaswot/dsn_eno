@@ -1,0 +1,218 @@
+C-->C7(LAMBDA = 0.95)
+     |--->C7a(Last iteration EPSILON =0.98)---> F-->G(New Reward Function)
+
+
+G
+|----> G1 (All RELU)----OK: some instability in some of the seeds.
+|----> G2 (LR low2high)-OK: but no better than F
+
+
+**************************************************************
+G
+**************************************************************
+
+                       
+HYPOTHESIS:
+- Try a hybrid of SIGMOID and RELU
+
+- Disruptive training with sawtooth EPSILON ranging from 0.5 to 0.95 to make model more robust
+ 
+- Systematized Reward Function
+
+MODEL:
+G : INPUT->FC1->RELU->FC2->SIGMOID->FC3->RELU->OUT
+LOSS : MSE
+
+LEARNING:   INIT_WEIGHT     = FC1 : KAIMING
+                              FC2 : XAVIER
+                              FC3 : KAIMING
+                              OUT : XAVIER
+            WIDTH           = 50
+            DEPTH           = 3
+            WEIGHT_DECAY    = 1E-3
+            LR              = 1E-4
+            UPDATE_FREQ     = 18 MONTHS
+            MEMORY          = 24 MONTHS
+            ITERATION       = 50
+            BATCH_SIZE      = 32
+            EPSILON         = SAWTOOTH (0.5-0.95)              
+            GAMMA           = 0.9                
+            LAMBDA          = 0.9
+            
+TRAINING:   TOKYO[2000-2009]
+            BATTERY_RESET    = 0 %
+            REWARD_FUNC      = TYPE2
+                               violation_penalty = 3
+                               battery full = -2
+                               battery dead = -4
+                               R = r1*(2**r2) - violation_penalty
+            REWARD_BROADCAST = TRUE
+            
+            LAST TRAINING ITERATIONS = 10 [TOKYO, 2000-2009]
+            EPSILON                  = 0.95
+            LR                       = 1E-4
+            
+TESTING:    TOKYO[2000-2018]
+            GREEDY POLICY
+   
+*********
+RESULTS:
+*********
+SEED 0
+YEAR		AVG_RWD		VIOLATIONS
+2000 		 1.44 		 0
+2001 		 1.46 		 0
+2002 		 1.41 		 0
+2003 		 1.44 		 0
+2004 		 1.44 		 0
+2005 		 1.5 		 0
+2006 		 1.44 		 0
+2007 		 1.45 		 0
+2008 		 1.51 		 0
+2009 		 1.45 		 0
+2010 		 1.46 		 0
+2011 		 1.51 		 0
+2012 		 1.47 		 0
+2013 		 1.49 		 0
+2014 		 1.42 		 0
+2015 		 1.42 		 0
+2016 		 1.43 		 0
+2017 		 1.49 		 0
+2018 		 1.43 		 0
+
+SEED 1
+2000 		 1.32 		 0
+2001 		 1.34 		 0
+2002 		 1.26 		 0
+2003 		 1.3 		 1
+2004 		 1.29 		 1
+2005 		 1.38 		 0
+2006 		 1.31 		 0
+2007 		 1.27 		 2
+2008 		 1.37 		 0
+2009 		 1.34 		 0
+2010 		 1.31 		 0
+2011 		 1.38 		 0
+2012 		 1.32 		 0
+2013 		 1.31 		 1
+2014 		 1.24 		 1
+2015 		 1.27 		 1
+2016 		 1.27 		 2
+2017 		 1.33 		 0
+2018 		 1.27 		 1
+
+SEED 2
+YEAR		AVG_RWD		VIOLATIONS
+2000 		 1.36 		 0
+2001 		 1.41 		 0
+2002 		 1.29 		 0
+2003 		 1.33 		 1
+2004 		 1.36 		 0
+2005 		 1.42 		 0
+2006 		 1.34 		 0
+2007 		 1.37 		 0
+2008 		 1.39 		 0
+2009 		 1.38 		 0
+2010 		 1.38 		 0
+2011 		 1.43 		 0
+2012 		 1.37 		 0
+2013 		 1.41 		 0
+2014 		 1.34 		 0
+2015 		 1.31 		 0
+2016 		 1.36 		 0
+2017 		 1.4 		 0
+2018 		 1.36 		 0
+
+SEED 3
+YEAR		AVG_RWD		VIOLATIONS
+2000 		 1.36 		 0
+2001 		 1.39 		 0
+2002 		 1.31 		 0
+2003 		 1.34 		 1
+2004 		 1.37 		 0
+2005 		 1.42 		 0
+2006 		 1.34 		 0
+2007 		 1.37 		 0
+2008 		 1.43 		 0
+2009 		 1.37 		 0
+2010 		 1.36 		 0
+2011 		 1.43 		 0
+2012 		 1.39 		 0
+2013 		 1.41 		 0
+2014 		 1.32 		 0
+2015 		 1.34 		 0
+2016 		 1.34 		 0
+2017 		 1.41 		 0
+2018 		 1.37 		 0
+
+SEED 4
+YEAR		AVG_RWD		VIOLATIONS
+2000 		 1.38 		 0
+2001 		 1.42 		 0
+2002 		 1.32 		 1
+2003 		 1.38 		 1
+2004 		 1.37 		 1
+2005 		 1.46 		 0
+2006 		 1.37 		 0
+2007 		 1.37 		 1
+2008 		 1.46 		 0
+2009 		 1.4 		 0
+2010 		 1.4 		 0
+2011 		 1.47 		 0
+2012 		 1.41 		 0
+2013 		 1.43 		 0
+2014 		 1.34 		 1
+2015 		 1.33 		 0
+2016 		 1.36 		 1
+2017 		 1.42 		 0
+2018 		 1.36 		 1
+
+SEED 5
+YEAR		AVG_RWD		VIOLATIONS
+2000 		 1.44 		 2
+2001 		 1.51 		 0
+2002 		 1.35 		 5
+2003 		 1.37 		 5
+2004 		 1.44 		 2
+2005 		 1.52 		 2
+2006 		 1.47 		 0
+2007 		 1.47 		 0
+2008 		 1.53 		 0
+2009 		 1.47 		 0
+2010 		 1.48 		 0
+2011 		 1.54 		 0
+2012 		 1.45 		 2
+2013 		 1.51 		 0
+2014 		 1.44 		 0
+2015 		 1.4 		 2
+2016 		 1.37 		 5
+2017 		 1.44 		 3
+2018 		 1.44 		 0
+
+SEED 6
+YEAR		AVG_RWD		VIOLATIONS
+2000 		 1.38 		 0
+2001 		 1.4 		 0
+2002 		 1.34 		 0
+2003 		 1.38 		 0
+2004 		 1.36 		 0
+2005 		 1.44 		 0
+2006 		 1.37 		 0
+2007 		 1.38 		 0
+2008 		 1.44 		 0
+2009 		 1.39 		 0
+2010 		 1.39 		 0
+2011 		 1.44 		 0
+2012 		 1.4 		 0
+2013 		 1.42 		 0
+2014 		 1.35 		 0
+2015 		 1.36 		 0
+2016 		 1.37 		 0
+2017 		 1.41 		 0
+2018 		 1.36 		 0
+
+***************************
+DISCUSSION AND CONCLUSIONS
+***************************
+Very good results with stable/robust outputs. Better than/Comparable to all RELU model A.
+Is much more intelligent than A - does not increase duty cycles as much on critical days (Wakkanai,2000: 320-350)

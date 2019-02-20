@@ -10,15 +10,25 @@ C
 |-> C5 (TKY, WKKN and MNMDTO)----------> OK
 |                                  |---> C5A(No disruption)------X
 |-> C6 (No Weather Forecast)-------------------------------------X
+|-> C7 (LAMBDA = 0.95)------------------------------------------OK
+|   |-->C7_(Last Iteration=30)----------------------------------OK: better than C7 - very intelligent
+|        |--> C7_a (Last iteration EPSILON =0.98): better than C7 but not as intelligent
+|        |--> C7_b (Last iteration LR = 0.00001):  not better than C7_a
+|        |--> C7_c (Last iteration EPSILON =0.98, LR = 0.00001): not better than C7_a
+|
+|   |-->C7a(Target Update = 6 months, Last Phase Iteration = 30)--OK: not as good as C7_, better than C in Wakkanai
+|
 |
 |-> CA-->[Target Update=6 months, TKY/WKKN/MNMDTO, EPSILON = 0.9    , Iteration=80, LR=1E-5, LAST_EPSILON=0.97, Duty Cycle Variance Reward]
 |-> CB-->[Target Update=6 months, TKY/WKKN/MNMDTO, Slow EPSILON(A=5), Iteration=80, LR=1E-5, LAST_EPSILON=0.97, Duty Cycle Variance Reward]--best ENP, high duty cycle variance
 |-> CC-->[Target Update=6 months, TKY/WKKN/MNMDTO, Slow EPSILON(A=5), Iteration=80, LR=1E-4, LAST_EPSILON=0.97, Duty Cycle Variance Reward]--worst ENP, low duty cycle variance
-|
-|
-|
-|
-|
+|-> CD-->[Target Update=6 months, TKY/WKKN/MNMDTO, Sawtooth EPSILON(A=5), Iteration=80, LR=1E-4, LAST_EPSILON=0.97, Duty Cycle Variance Reward]--good ENP, low duty cycle variance, 
+|   |
+|   |-> CD1-->Target Update = 3 months
+|   |-> CD2-->Target Update = 12 months: much better than CD and CD1
+|   |    |-> CD2a (LAMBDA=0.95, enp violation fixed)
+|   |
+|   |-> CD3-->Target Update = 6 months, enp violation fixed, Stricter BMEAN limits, lambda=0.95-->BEST. duty cycles still catastrophic
 |
 |
 
