@@ -3,8 +3,9 @@ C-->C7(LAMBDA = 0.95)
 
 
 G
-|----> G1 (All RELU)----OK: some instability in some of the seeds.
-|----> G2 (LR low2high)-OK: but no better than F
+|----> G1 (More duty cycle var reward)----
+|----> G2 (All RELU)----------------------
+|----> G3 (LR low2high)-------------------
 
 
 **************************************************************

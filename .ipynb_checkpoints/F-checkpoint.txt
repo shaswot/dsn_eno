@@ -5,7 +5,7 @@ C-->C7(LAMBDA = 0.95)
 F
 |----> F1 (All RELU)----OK: some instability in some of the seeds.
 |----> F2 (LR low2high)-OK: but no better than F
-|----> F3 (rewardfn_v2)
+|----> F3 (rewardfn_v2): VERY GOOD. NEW CHAMPION
 |
 
 **************************************************************
