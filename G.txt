@@ -9,10 +9,16 @@ G
 |----> G4 (All Sigmoid)-------------------> some action variance. No catastrophic actions
 |----> G5 (All Locations)-----------------> Catastrophic behavior
 |----> G6 (Improved Reward)---------------> Catastrophic behavior (Penalty depends on enp linearly)
-|----> G7 (Sigmoid EPSILON, 
-|          more violation punishment
-           fixed ENP bug)-----------------> 
-
+|----> G7 (more violation punishment
+           fixed ENP bug)-----------------> Okay performance still some catastrophes
+           |
+           |-> Copy 1: Target Update = 6 months--> Not very good performance but no catastrophes
+           |
+           |-> Copy 2: LR = 1E-5-----------------> Not good performance at all. Learning Curve is interesting
+                |
+                |-> Copy 3: WIDTH = 20----------------> Bad performance
+                |
+                |-> Copy 4: WIDTH = 100---------------> Good performance with lots of catastrophes
 
 **************************************************************
 G
