@@ -8,7 +8,10 @@ G
 |----> G3 (LR low2high)-------------------> catastrohy at 2003
 |----> G4 (All Sigmoid)-------------------> some action variance. No catastrophic actions
 |----> G5 (All Locations)-----------------> Catastrophic behavior
-|----> G6 (Improved Reward)
+|----> G6 (Improved Reward)---------------> Catastrophic behavior (Penalty depends on enp linearly)
+|----> G7 (Sigmoid EPSILON, 
+|          more violation punishment
+           fixed ENP bug)-----------------> 
 
 
 **************************************************************

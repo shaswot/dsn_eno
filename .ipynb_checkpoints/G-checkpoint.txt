@@ -3,11 +3,15 @@ C-->C7(LAMBDA = 0.95)
 
 
 G
-|----> G1 (More duty cycle var reward)---->
-|----> G2 (All RELU)---------------------->
-|----> G3 (LR low2high)------------------->
-|----> G4 (All Sigmoid)------------------->
-|----> G5 (All Locations)----------------->
+|----> G1 (More duty cycle var reward)----> not much change in action variance. Many catastrophic actions.
+|----> G2 (All RELU)----------------------> more action variance. Some catastrophic actions
+|----> G3 (LR low2high)-------------------> catastrohy at 2003
+|----> G4 (All Sigmoid)-------------------> some action variance. No catastrophic actions
+|----> G5 (All Locations)-----------------> Catastrophic behavior
+|----> G6 (Improved Reward)---------------> Catastrophic behavior (Penalty depends on enp linearly)
+|----> G7 (Sigmoid EPSILON, 
+|          more violation punishment
+           fixed ENP bug)-----------------> 
 
 
 **************************************************************
